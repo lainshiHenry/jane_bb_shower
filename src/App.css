@@ -12,6 +12,10 @@
   .App-logo {
     animation: jump infinite 2s linear;
     animation-direction: reverse;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
   }
 }
 
@@ -28,11 +32,17 @@
   align-items: center;
   justify-content: end;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* color: white; */
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.content {
+  height: 65vh;
+  width: 80vw;
+  overflow-x: scroll;
 }
 
 /* @keyframes App-logo-spin {
@@ -45,7 +55,7 @@
 } */
 
 @keyframes jump {
-  0%   {transform: translate3d(80%, 0, 0)}
-  50% {transform: translate3d(-80%, 0, 0)}
-  100%   {transform: translate3d(80%, 0, 0)}
+  0%   {transform: translate3d(-80%, 0, 0)}
+  50% {transform: translate3d(80%, 0, 0)}
+  100%   {transform: translate3d(-80%, 0, 0)}
 }

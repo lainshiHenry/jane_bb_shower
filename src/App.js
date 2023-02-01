@@ -3,10 +3,57 @@ import logo from './images/bunny_website_bun.png';
 import './App.css';
 
 function App() {
+
+  const contentBlock = document.querySelector('.content');
+  let currentScrollPosition = 0;
+  let maxScrollPosition = 0;
+  let hasMaxScrollPositionReached = false;
+
+  if(contentBlock) {
+    contentBlock.onscroll = (event) => {
+      console.log('scrolling');
+      currentScrollPosition =  contentBlock.scrollTop;
+      maxScrollPosition = contentBlock.scrollHeight - contentBlock.clientHeight;
+      hasMaxScrollPositionReached = Math.abs(contentBlock.scrollHeight - contentBlock.clientHeight - contentBlock.scrollTop) < 1;
+      document.body.style.setProperty('--scroll', currentScrollPosition/maxScrollPosition);
+    }
+  
+  }
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div className='content'>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+        </div>
+        
+        <div>
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+        
         {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
