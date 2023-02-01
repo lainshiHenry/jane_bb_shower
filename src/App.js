@@ -16,6 +16,7 @@ function App() {
       maxScrollPosition = contentBlock.scrollHeight - contentBlock.clientHeight;
       hasMaxScrollPositionReached = Math.abs(contentBlock.scrollHeight - contentBlock.clientHeight - contentBlock.scrollTop) < 1;
       document.body.style.setProperty('--scroll', currentScrollPosition/maxScrollPosition);
+      document.getElementById('demo').innerHTML = document.body.style.getPropertyValue('--scroll');
     }
   
   }
@@ -23,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <p id='demo'></p>
         <div className='content'>
           <p>item</p>
           <p>item</p>
