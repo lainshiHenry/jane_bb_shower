@@ -9,6 +9,8 @@ function App() {
   let maxScrollPosition = 0;
   let hasMaxScrollPositionReached = false;
 
+  debugger;
+
   if(contentBlock) {
     contentBlock.onscroll = (event) => {
       console.log('scrolling');
@@ -20,12 +22,65 @@ function App() {
     }
   
   }
+
+  // function _contentBlockScroll () {
+  //   debugger;
+  //   console.log('test');
+  // }
   
   return (
     <div className="App">
       <header className="App-header">
         <p id='demo'></p>
         <div className='content'>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
+          <p>item</p>
           <p>item</p>
           <p>item</p>
           <p>item</p>
