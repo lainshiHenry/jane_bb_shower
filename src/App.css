@@ -22,6 +22,26 @@
   width: 60vw;
 }
 
+.Page3Style{
+  width: 60vw;
+}
+
+.PageRSVPButtonWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.PageRSVPButtonWrapper > button {
+  background: transparent;
+  border: none;
+}
+
+.rsvpButton{
+  width: 20vw;
+  padding: 2%;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
