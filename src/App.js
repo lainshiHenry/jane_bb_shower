@@ -27,99 +27,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className='content'>
+        <div className='AnimationSection'>
+          <img src={logo} className="App-logo" alt="logo" />
+        </div>
+        <div className='content' id='contentBlock'>
           <Page1 />
           <Page2 />
           <Page3 />
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
-          <p>item</p>
         </div>
-        
-        <div>
-          <img src={logo} className="App-logo" alt="logo" />
-        </div>
-        
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
       </header>
     </div>
   );
