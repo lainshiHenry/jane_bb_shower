@@ -8,13 +8,27 @@
   padding-bottom: 10vh;
 }
 
+.PageStyle {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.Page1Image{
+  width: 60vw;
+}
+
+.Page2Style{
+  width: 60vw;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: jump infinite 2s linear;
+    animation: jump infinite 10s linear;
     animation-direction: reverse;
-    animation-play-state: paused;
+    animation-play-state: running;
     animation-delay: calc(var(--scroll) * -1s);
-    animation-iteration-count: 1;
     animation-fill-mode: both;
   }
 }

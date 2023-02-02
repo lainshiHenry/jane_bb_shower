@@ -1,6 +1,11 @@
 // import logo from './logo.svg';
+import React from 'react'
 import logo from './images/bunny_website_bun.png';
 import './App.css';
+import MainInviteComponent from './components/MainInviteComponent';
+import Page1 from './components/Page1';
+import Page2 from './components/Page2';
+import Page3 from './components/Page3';
 
 function App() {
 
@@ -9,30 +14,23 @@ function App() {
   let maxScrollPosition = 0;
   let hasMaxScrollPositionReached = false;
 
-  debugger;
-
-  if(contentBlock) {
-    contentBlock.onscroll = (event) => {
-      console.log('scrolling');
-      currentScrollPosition =  contentBlock.scrollTop;
-      maxScrollPosition = contentBlock.scrollHeight - contentBlock.clientHeight;
-      hasMaxScrollPositionReached = Math.abs(contentBlock.scrollHeight - contentBlock.clientHeight - contentBlock.scrollTop) < 1;
-      document.body.style.setProperty('--scroll', currentScrollPosition/maxScrollPosition);
-      document.getElementById('demo').innerHTML = document.body.style.getPropertyValue('--scroll');
-    }
-  
-  }
-
-  // function _contentBlockScroll () {
-  //   debugger;
-  //   console.log('test');
+  // if(contentBlock) {
+  //   contentBlock.addEventListener('scroll', (event) => {
+  //     console.log('scrolling');
+  //     console.log(event.type === 'scroll');
+  //     currentScrollPosition =  contentBlock.scrollTop;
+  //     maxScrollPosition = contentBlock.scrollHeight - contentBlock.clientHeight;
+  //     // document.body.style.setProperty('--scroll', (currentScrollPosition/maxScrollPosition).toString());
+  //   })
   // }
   
   return (
     <div className="App">
       <header className="App-header">
-        <p id='demo'></p>
         <div className='content'>
+          <Page1 />
+          <Page2 />
+          <Page3 />
           <p>item</p>
           <p>item</p>
           <p>item</p>
