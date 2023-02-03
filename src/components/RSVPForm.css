@@ -1,0 +1,15 @@
+.AttendeesNumberSelection{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.AttendeesNumberSelectionNumber{
+    border-radius: 50%;
+    width: 1.5rem;
+    border: none;
+    background-color: transparent;
+}
+
+.Selected {
+    border: 3px solid #0A2E6F;
+}
