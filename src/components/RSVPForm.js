@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './RSVPForm.css'
+import DBController from '../Controller/DBController';
 
 const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
+  let numberOfAttendees = useRef();
+  let hasDietaryRestrictions = false;
   const [inputName1, setInputName1] = useState('');
   const [inputName2, setInputName2] = useState('');
   const [inputName3, setInputName3] = useState('');
@@ -12,8 +15,18 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
   const [displayInputName4, setDisplayInputName4] = useState(false);
   const [dietaryText, setDietaryText] = useState('');
   const [displayDietary, setDisplayDietary] = useState(false);
+  const dbController = new DBController();
 
   const handleSubmit = () => {
+    dbController.handleSubmit({
+      numberOfAttendees: numberOfAttendees.current,
+      inputName1: inputName1,
+      inputName2: inputName2,
+      inputName3: inputName3,
+      inputName4: inputName4,
+      hasDietaryRestrictions: hasDietaryRestrictions,
+      dietaryRestrictionText: dietaryText,
+    });
     setThankYouInfoVisibleFunction(true);
     cookieController.writeFormCookies({numOfDays: 30});
   }
@@ -97,18 +110,22 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
     const dietSelectionYes = document.getElementById('DietarySelectionChoiceY');
     const dietSelectionNo = document.getElementById('DietarySelectionChoiceN');
 
-    if(choiceSelectedBool){
-      dietSelectionYes.classList.add('Selected');
-      if(dietSelectionNo.classList.contains('Selected')){
-        dietSelectionNo.classList.remove('Selected');
+    if( dietSelectionYes && dietSelectionNo ){
+      if(choiceSelectedBool){
+        dietSelectionYes.classList.add('Selected');
+        if(dietSelectionNo.classList.contains('Selected')){
+          dietSelectionNo.classList.remove('Selected');
+        }
+        setDisplayDietary(true);
+        hasDietaryRestrictions = true;
+      } else {
+        dietSelectionNo.classList.add('Selected');
+        if(dietSelectionYes.classList.contains('Selected')){
+          dietSelectionYes.classList.remove('Selected');
+        }
+        setDisplayDietary(false);
+        hasDietaryRestrictions = false;
       }
-      setDisplayDietary(true);
-    } else {
-      dietSelectionNo.classList.add('Selected');
-      if(dietSelectionYes.classList.contains('Selected')){
-        dietSelectionYes.classList.remove('Selected');
-      }
-      setDisplayDietary(false);
     }
   }
 
@@ -121,7 +138,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
   }
 
   const handleAttendeeInputChange = (numberSelected) => {
-    console.log('selected' + numberSelected);
+    numberOfAttendees.current = numberSelected;
     _addSelectedClass(numberSelected);
   }
 
