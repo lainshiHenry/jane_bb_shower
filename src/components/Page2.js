@@ -10,7 +10,7 @@ const Page2 = () => {
         </section>
         <hr></hr>
         <section>
-            <p>Saturday March 4th<br />Time: 12PM - 2pm</p>
+            <p>Saturday March 4th<br />Time: 12pm - 2pm</p>
         </section>
         <hr></hr>
         <section>
