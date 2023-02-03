@@ -2,21 +2,16 @@
 import React from 'react'
 import logo from './images/bunny_website_bun.png';
 import './App.css';
-import MainInviteComponent from './components/MainInviteComponent';
 import Page1 from './components/Page1';
 import Page2 from './components/Page2';
 import Page3 from './components/Page3';
 import CookieController from './Controller/CookieController';
+import './fonts/odstemplik.otf';
 
 function App() {
 
   const cookieController = new CookieController();
-  const contentBlock = document.querySelector('.content');
   let isFormCompleted = false;
-  
-  let currentScrollPosition = 0;
-  let maxScrollPosition = 0;
-  let hasMaxScrollPositionReached = false;
 
   function load(){
     isFormCompleted = cookieController.getCookieValue();

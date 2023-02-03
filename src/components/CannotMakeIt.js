@@ -1,5 +1,6 @@
 import React from 'react'
 import './CannotMakeIt.css'
+import '../App.css'
 import GiftRegistryButton from '../images/gift_registry_button.png'
 
 const CannotMakeIt = () => {
