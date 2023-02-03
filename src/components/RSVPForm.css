@@ -3,7 +3,45 @@
     justify-content: space-evenly;
 }
 
+.AttendeesNameSectionInput{
+    width: -webkit-fill-available;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid #0A2E6F;
+    background-color: transparent;
+    margin: 5px;
+}
+
+.AttendeesNameSectionInput:focus{
+    outline: 2px solid #0A2E6F;
+}
+
+.DietarySelection{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+.DietarySectionInput {
+    width: -webkit-fill-available;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid #0A2E6F;
+    background-color: transparent;
+    margin: 5px 5px 10px 5px;
+}
+
 .AttendeesNumberSelectionNumber{
+    border-radius: 50%;
+    width: 1.5rem;
+    border: none;
+    background-color: transparent;
+}
+
+.DietarySelectionChoice{
     border-radius: 50%;
     width: 1.5rem;
     border: none;

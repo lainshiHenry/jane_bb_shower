@@ -11,7 +11,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
   const [displayInputName3, setDisplayInputName3] = useState(false);
   const [displayInputName4, setDisplayInputName4] = useState(false);
   const [dietaryText, setDietaryText] = useState('');
-  const [dusplayDietary, setDisplayDietary] = useState(false);
+  const [displayDietary, setDisplayDietary] = useState(false);
 
   const handleSubmit = () => {
     setThankYouInfoVisibleFunction(true);
@@ -93,6 +93,25 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
     }
   }
 
+  function _addDietarySelectionClass(choiceSelectedBool) {
+    const dietSelectionYes = document.getElementById('DietarySelectionChoiceY');
+    const dietSelectionNo = document.getElementById('DietarySelectionChoiceN');
+
+    if(choiceSelectedBool){
+      dietSelectionYes.classList.add('Selected');
+      if(dietSelectionNo.classList.contains('Selected')){
+        dietSelectionNo.classList.remove('Selected');
+      }
+      setDisplayDietary(true);
+    } else {
+      dietSelectionNo.classList.add('Selected');
+      if(dietSelectionYes.classList.contains('Selected')){
+        dietSelectionYes.classList.remove('Selected');
+      }
+      setDisplayDietary(false);
+    }
+  }
+
   function _removeSelectedClass(node) {
     if( node ) {
       if( node.classList.contains('Selected') ){
@@ -104,6 +123,10 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
   const handleAttendeeInputChange = (numberSelected) => {
     console.log('selected' + numberSelected);
     _addSelectedClass(numberSelected);
+  }
+
+  const handleDietaryInputChange = (choiceSelected) => {
+    _addDietarySelectionClass(choiceSelected);
   }
 
   const handleAttendeeTextChange = (value, numberSelected) => {
@@ -123,7 +146,12 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
         default:
           setInputName1(value.target.value);
       }
-    
+  }
+
+  const handleDietaryTextChange = (value) => {
+    if(value.target.value) {
+      setDietaryText(value.target.value);
+    }
   }
 
   return (
@@ -140,8 +168,13 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
       {displayInputName2 ? <input type={"text"} value={inputName2} className="AttendeesNameSectionInput" onChange={(value) => {handleAttendeeTextChange(value, 2)}}></input> : <div></div>}
       {displayInputName3 ? <input type={"text"} value={inputName3} className="AttendeesNameSectionInput" onChange={(value) => {handleAttendeeTextChange(value, 3)}}></input> : <div></div>}
       {displayInputName4 ? <input type={"text"} value={inputName4} className="AttendeesNameSectionInput" onChange={(value) => {handleAttendeeTextChange(value, 4)}}></input> : <div></div>}
-      <label htmlFor='DietaryRestrictionsInput'>Dietary Restrictions</label>
-      <input type={"text"} id="DietaryRestrictionsInput"></input>
+      <div style={{height: '15px'}}></div>
+      <label htmlFor='DietaryRestrictionsInput' className='DietaryRestrictionsInput'>Dietary Restrictions</label>
+      <div className='DietarySelection'>
+        <button className='DietarySelectionChoice' id="DietarySelectionChoiceY" onClick={() => {handleDietaryInputChange(true)}}>Y</button>
+        <button className='DietarySelectionChoice' id="DietarySelectionChoiceN" onClick={() => {handleDietaryInputChange(false)}}>N</button>
+      </div>
+      {displayDietary ? <input type={"text"} value={dietaryText} className="DietarySectionInput" onChange={(value) => {handleDietaryTextChange(value)}}></input> : <div></div>}
       <button onClick={handleSubmit} >Submit</button>
   
     </div>
