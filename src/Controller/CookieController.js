@@ -17,14 +17,19 @@ export default class CookieController{
         return "";
     }
 
-    writeFormCookies(){
+    writeFormCookies({numOfDays}){
         const d = new Date();
-        d.setTime(d.getTime() + (5 * 24 * 60 * 60 * 1000));
+        d.setTime(d.getTime() + (numOfDays * 24 * 60 * 60 * 1000));
         let expires = "expires="+d.toUTCString();
         document.cookie = 'isFormCompleted=true;' + expires + ";path=/";
     }
 
     getCookieValue(){
         return this.readCookies("isFormCompleted");
+    }
+
+    deleteCookies(){
+        this.writeFormCookies({numOfDays: 0});
+        console.log('deleted');
     }
 }

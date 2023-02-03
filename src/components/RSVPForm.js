@@ -4,7 +4,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
 
   const handleSubmit = () => {
     setThankYouInfoVisibleFunction(true);
-    cookieController.writeFormCookies();
+    cookieController.writeFormCookies({numOfDays: 30});
 }
 
   return (

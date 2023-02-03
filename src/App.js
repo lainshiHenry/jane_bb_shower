@@ -22,12 +22,16 @@ function App() {
     isFormCompleted = cookieController.getCookieValue();
   }
 
+  const devDeleteCookies = () => {
+    cookieController.deleteCookies();
+  }
+
   load();
   
   return (
     <div className="App">
       <header className="App-header">
-        <div className='AnimationSection'>
+        <div className='AnimationSection' onClick={devDeleteCookies}>
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div className='content' id='contentBlock'>
