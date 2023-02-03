@@ -22,6 +22,7 @@ function App() {
   const openDisplayAdminPage = () => {
     if(adminClickCount.current > 10){
       setDisplayAdminPage(true);
+      adminClickCount.current = 0;
     } else {
       adminClickCount.current++;
     }
