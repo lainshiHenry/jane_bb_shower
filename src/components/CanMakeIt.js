@@ -1,9 +1,14 @@
 import React from 'react'
 import RSVPForm from './RSVPForm'
 
-const CanMakeIt = () => {
+const CanMakeIt = ({setThankYouInfoVisibleFunction, cookieController}) => {
   return (
-    <div><RSVPForm /></div>
+    <div>
+      <RSVPForm 
+        setThankYouInfoVisibleFunction={setThankYouInfoVisibleFunction} 
+        cookieController={cookieController} 
+      />
+    </div>
   )
 }
 

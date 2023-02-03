@@ -5,24 +5,22 @@ import NoBunny from '../images/no_button.png';
 import CannotMakeIt from './CannotMakeIt';
 import CanMakeIt from './CanMakeIt';
 import CanMakeItEnd from './CanMakeItEnd';
+import CookieController from '../Controller/CookieController';
 
-const Page3 = ({isFormCompleted = true}) => {
+const Page3 = ({isFormCompleted = false}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
     const [isNoPressed, setIsNoPressed] = useState(false);
     const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
+    const cookieController = new CookieController();
 
     function _getBlock(){
         if(isYesPressed && !isNoPressed) {
-            return <CanMakeIt />
+            return <CanMakeIt setThankYouInfoVisibleFunction={setThankYouInfoVisible} cookieController={cookieController}/>
         } else if(!isYesPressed && isNoPressed) {
             return <CannotMakeIt />
         } else {
             return <div></div>
         }
-    }
-
-    function _handleSubmit(){
-        setThankYouInfoVisible(true);
     }
 
     function _automaticScrollToBottom(){
