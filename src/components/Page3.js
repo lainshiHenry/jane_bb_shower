@@ -4,10 +4,12 @@ import YesBunny from '../images/yes_button.png';
 import NoBunny from '../images/no_button.png';
 import CannotMakeIt from './CannotMakeIt';
 import CanMakeIt from './CanMakeIt';
+import CanMakeItEnd from './CanMakeItEnd';
 
-const Page3 = () => {
+const Page3 = ({isFormCompleted = true}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
     const [isNoPressed, setIsNoPressed] = useState(false);
+    const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
 
     function _getBlock(){
         if(isYesPressed && !isNoPressed) {
@@ -17,6 +19,10 @@ const Page3 = () => {
         } else {
             return <div></div>
         }
+    }
+
+    function _handleSubmit(){
+        setThankYouInfoVisible(true);
     }
 
     function _automaticScrollToBottom(){
@@ -61,15 +67,18 @@ const Page3 = () => {
 
   return (
     <div className='PageStyle'>
-        <div className='Page3Style'>
-            <p>RSVP</p>
-            <p>Can You Make it?</p>
-            <div className='PageRSVPButtonWrapper'>
-                <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
-                <button onClick={_handleRSVPNoClick}><img src={NoBunny} className='rsvpButton' id='rsvpNoButton'></img></button>
+        {thankYouInfoVisible ? 
+            <CanMakeItEnd /> :  
+            <div className='Page3Style'>
+                <p>RSVP</p>
+                <p>Can You Make it?</p>
+                <div className='PageRSVPButtonWrapper'>
+                    <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
+                    <button onClick={_handleRSVPNoClick}><img src={NoBunny} className='rsvpButton' id='rsvpNoButton'></img></button>
+                </div>
+                {_getBlock()}
             </div>
-            {_getBlock()}
-        </div>
+        }
     </div>
   )
 }
