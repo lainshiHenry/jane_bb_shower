@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'odstemplik';
+  src: local('odstemplik') url('./fonts/odstemplik.otf') format("opentype");
+}
+
+@font-face {
+  font-family: 'odstemplikBold';
+  src: local('odstemplikBold') url('./fonts/odstemplikBold.otf') format("opentype");
+}
+
 .App {
   text-align: center;
 }
