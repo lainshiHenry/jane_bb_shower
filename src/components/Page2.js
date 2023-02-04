@@ -13,7 +13,7 @@ const Page2 = () => {
             <p>Saturday March 4th<br />Time: 12pm - 2pm</p>
         </section>
         <hr></hr>
-        <section>
+        <section className='Page2Location'>
             <p>Norberry-Glenlee Community Center</p>
             <p>Multipurpose Room</p>
             <p>25 Molgat Ave.<br /> Winnipeg, MB<br /> R2M 1X3</p>

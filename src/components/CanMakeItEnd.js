@@ -3,9 +3,6 @@ import GiftRegistryButton from '../images/gift_registry_button.png'
 import './CannotMakeIt.css'
 
 const CanMakeItEnd = () => {
-    const giftRegistryClick = () => {
-        alert('go to link');
-    }
 
   return (
     <div>
