@@ -6,3 +6,12 @@
 .CannotMakeItButtonImage{
     width: 80%;
 }
+
+.GiftRegistryLinksList {
+    display: flex;
+    justify-content: space-around;
+}
+.GiftRegistryLink {
+    margin: 0 5px;
+    text-decoration: none;
+}

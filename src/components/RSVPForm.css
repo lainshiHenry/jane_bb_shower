@@ -51,3 +51,12 @@
 .Selected {
     border: 3px solid #0A2E6F;
 }
+
+.submitButtonStyle{
+    background-color: transparent;
+    border: none;
+}
+
+.submitButtonStyleImage{
+    width: 100%;
+}

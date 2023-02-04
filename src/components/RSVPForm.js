@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import './RSVPForm.css'
 import DBController from '../Controller/DBController';
+import SubmitButtonImage from '../images/submit_button.png';
 
 const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
   let numberOfAttendees = useRef();
@@ -192,7 +193,9 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController}) => {
         <button className='DietarySelectionChoice' id="DietarySelectionChoiceN" onClick={() => {handleDietaryInputChange(false)}}>N</button>
       </div>
       {displayDietary ? <input type={"text"} value={dietaryText} className="DietarySectionInput" onChange={(value) => {handleDietaryTextChange(value)}}></input> : <div></div>}
-      <button onClick={handleSubmit} >Submit</button>
+      <button onClick={handleSubmit} className='submitButtonStyle'>
+        <img src={SubmitButtonImage} className='submitButtonStyleImage'></img>
+      </button>
   
     </div>
   )
