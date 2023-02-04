@@ -11,6 +11,7 @@
     border-bottom: 2px solid #0A2E6F;
     background-color: transparent;
     margin: 5px;
+    max-width: 180px;
 }
 
 .AttendeesNameSectionInput:focus{
@@ -32,6 +33,7 @@
     border-bottom: 2px solid #0A2E6F;
     background-color: transparent;
     margin: 5px 5px 10px 5px;
+    max-width: 180px;
 }
 
 .AttendeesNumberSelectionNumber{

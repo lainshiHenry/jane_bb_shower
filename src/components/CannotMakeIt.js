@@ -15,7 +15,7 @@ const CannotMakeIt = () => {
             </button>
             <div className='GiftRegistryLinksList'>
                 <a className='GiftRegistryLink' href='https://www.amazon.ca/baby-reg/jane-yee-may-2023-winnipeg/2HTGN8Y3Z3CRP'>Amazon</a>
-                <a className='GiftRegistryLink' href='https://www.babiesrus.ca/en/babyregistry-account?registryNumber=62109015'>Toys r Us</a>
+                <a className='GiftRegistryLink' href='https://www.babiesrus.ca/en/babyregistry-account?registryNumber=62109015'>Babies R Us</a>
             </div>
         </p>
         <p>If you'd like the gift delivered to the baby shower even if you can't attend. Please message Steph (204-795-6957) for arrangements.</p>

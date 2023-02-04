@@ -11,6 +11,7 @@ const Page3 = ({isFormCompleted = false}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
     const [isNoPressed, setIsNoPressed] = useState(false);
     const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
+    const [isRSVPByDateVisible, setIsRSVPByDateVisible] = useState(true);
     const cookieController = new CookieController();
 
     function _getBlock(){
@@ -49,6 +50,7 @@ const Page3 = ({isFormCompleted = false}) => {
         const NoButton = document.getElementById('rsvpNoButton');
         if(YesButton && NoButton){
             _setStyle({enableButton: YesButton, disableButton: NoButton});
+            setIsRSVPByDateVisible(false);
         }
     }
 
@@ -59,6 +61,7 @@ const Page3 = ({isFormCompleted = false}) => {
         const NoButton = document.getElementById('rsvpNoButton');
         if(YesButton && NoButton){
             _setStyle({enableButton: NoButton, disableButton: YesButton});
+            setIsRSVPByDateVisible(false);
         }
     }
 
@@ -74,6 +77,13 @@ const Page3 = ({isFormCompleted = false}) => {
                     <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
                     <button onClick={_handleRSVPNoClick}><img src={NoBunny} className='rsvpButton' id='rsvpNoButton'></img></button>
                 </div>
+                {isRSVPByDateVisible ? 
+                    <section id='rsvpDate'>
+                        <div className='hidden'>Please RSVP by: </div>
+                        <div>Date</div>
+                    </section> : 
+                    <div></div>
+                }
                 {_getBlock()}
             </div>
         }

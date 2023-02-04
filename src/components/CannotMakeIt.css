@@ -9,9 +9,12 @@
 
 .GiftRegistryLinksList {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
+
 .GiftRegistryLink {
     margin: 0 5px;
     text-decoration: none;
+    border-radius: 50%;
+    background-color: #eda2c7;
 }
