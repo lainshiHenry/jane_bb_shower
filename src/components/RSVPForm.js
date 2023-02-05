@@ -12,8 +12,9 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
   const dbController = new DBController();
 
   const handleSubmit = () => {
+    debugger;
     dbController.handleSubmit({
-      attendeeName: attendeeName,
+      name: attendeeName,
       rsvpDecision: "Yes",
       numberOfAdults: numberOfAdults.current,
       numberOfChildren: numberOfChildren.current,
@@ -225,10 +226,9 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
   }
 
   const handleDietaryTextChange = (value) => {
-    if(value.target.value) {
       setDietaryText(value.target.value);
-    }
   }
+  
 
   return (
     <div>

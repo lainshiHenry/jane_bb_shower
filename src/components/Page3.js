@@ -9,6 +9,7 @@ import CookieController from '../Controller/CookieController';
 import SubmitButtonImage from '../images/submit_button.png';
 import './RSVPForm.css'
 import DBController from '../Controller/DBController';
+import RSVPButtonWrapper from './RSVPButtonWrapper';
 
 const Page3 = ({isFormCompleted = false}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
@@ -17,6 +18,7 @@ const Page3 = ({isFormCompleted = false}) => {
     const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
     const [isRSVPByDateVisible, setIsRSVPByDateVisible] = useState(true);
     const [isRSVPNoSubmitButtonVisible, setIsRSVPNoSubmitButtonVisible] = useState(false);
+    const [isRSVPNoSubmitted, setisRSVPNoSubmitted] = useState(false);
     const [isRSVPNoPostSubmitTextVisible, setIsRSVPNoPostSubmitTextVisible] = useState(false);
     const cookieController = new CookieController();
     const dbController = new DBController();
@@ -85,6 +87,7 @@ const Page3 = ({isFormCompleted = false}) => {
             name: nameText,
         });
         setIsRSVPNoPostSubmitTextVisible(true);
+        setisRSVPNoSubmitted(true);
         cookieController.writeFormCookies(30);
     }
 
@@ -94,14 +97,15 @@ const Page3 = ({isFormCompleted = false}) => {
         {thankYouInfoVisible ? 
             <CanMakeItEnd /> :  
             <div className='Page3Style'>
-                <p>RSVP</p>
+                {isRSVPNoSubmitted ? <div></div>: <div><p>RSVP</p>
                 <label htmlFor='AttendeesNameSection'>Name</label>
                 <input type='text' value={nameText} className='AttendeesNameSectionInput' onChange={(newValue) => {_handleNameTextChange(newValue)}}></input>
                 <p>Can You Make it?</p>
                 <div className='PageRSVPButtonWrapper'>
                     <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
                     <button onClick={_handleRSVPNoClick}><img src={NoBunny} className='rsvpButton' id='rsvpNoButton'></img></button>
-                </div>
+                </div></div>}
+                {/* <RSVPButtonWrapper RSVPYesOnClick={_handleRSVPYesClick} RSVPNoOnClick={_handleRSVPNoClick}/></div>} */}
                 {isRSVPNoSubmitButtonVisible ? 
                     <button onClick={handleSubmit} className='submitButtonStyle'>
                         <img src={SubmitButtonImage} className='submitButtonStyleImage'></img>
@@ -111,7 +115,7 @@ const Page3 = ({isFormCompleted = false}) => {
                 {isRSVPByDateVisible ? 
                     <section id='rsvpDate'>
                         <div className='hidden'>Please RSVP by: </div>
-                        <div><b>Monday, February 20, 2023</b></div>
+                        <div>Monday, February 20, 2023</div>
                     </section> : 
                     <div></div>
                 }
