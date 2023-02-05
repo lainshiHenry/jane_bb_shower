@@ -22,7 +22,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
       dietaryRestrictionText: dietaryText,
     });
     setThankYouInfoVisibleFunction(true);
-    cookieController.writeFormCookies({numOfDays: 30});
+    cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: true});
   }
 
   function _addSelectedClassToNumChildren(index) {

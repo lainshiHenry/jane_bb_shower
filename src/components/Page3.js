@@ -11,7 +11,7 @@ import './RSVPForm.css'
 import DBController from '../Controller/DBController';
 import RSVPButtonWrapper from './RSVPButtonWrapper';
 
-const Page3 = ({isFormCompleted = false}) => {
+const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
     const [isNoPressed, setIsNoPressed] = useState(false);
     const [nameText, setNameText] = useState('');
@@ -81,14 +81,15 @@ const Page3 = ({isFormCompleted = false}) => {
         setNameText(value.target.value);
     }
 
-    const handleSubmit = () => {
+    const handleNoSubmit = () => {
         console.log('handleSubmit');
         dbController.handleSubmit({
             name: nameText,
         });
         setIsRSVPNoPostSubmitTextVisible(true);
         setisRSVPNoSubmitted(true);
-        cookieController.writeFormCookies(30);
+        setIsRSVPNoSubmitButtonVisible(false);
+        cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: false});
     }
 
 
@@ -107,7 +108,7 @@ const Page3 = ({isFormCompleted = false}) => {
                 </div></div>}
                 {/* <RSVPButtonWrapper RSVPYesOnClick={_handleRSVPYesClick} RSVPNoOnClick={_handleRSVPNoClick}/></div>} */}
                 {isRSVPNoSubmitButtonVisible ? 
-                    <button onClick={handleSubmit} className='submitButtonStyle'>
+                    <button onClick={handleNoSubmit} className='submitButtonStyle'>
                         <img src={SubmitButtonImage} className='submitButtonStyleImage'></img>
                     </button> : 
                     <div></div>

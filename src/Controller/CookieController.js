@@ -17,19 +17,19 @@ export default class CookieController{
         return "";
     }
 
-    writeFormCookies({numOfDays}){
+    writeFormCookies({numOfDays, rsvpGoing}){
         const d = new Date();
         d.setTime(d.getTime() + (numOfDays * 24 * 60 * 60 * 1000));
         let expires = "expires="+d.toUTCString();
-        document.cookie = 'isFormCompleted=true;' + expires + ";path=/";
+        document.cookie = 'isFormCompleted=true;rsvpGoing=' + rsvpGoing + ';' + expires + ";path=/";
     }
 
-    getCookieValue(){
-        return this.readCookies("isFormCompleted");
+    getCookieValue(cookieName){
+        return this.readCookies(cookieName);
     }
 
     deleteCookies(){
-        this.writeFormCookies({numOfDays: 0});
+        this.writeFormCookies({numOfDays: 0, rsvpGoing: false});
         console.log('deleted');
     }
 }

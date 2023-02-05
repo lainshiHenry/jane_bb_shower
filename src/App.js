@@ -13,10 +13,12 @@ function App() {
   const [displayAdminPage, setDisplayAdminPage] = useState(false);
   const cookieController = new CookieController();
   let isFormCompleted = false;
+  let rsvpGoing = false;
   let adminClickCount = useRef(0);
 
   function load(){
-    isFormCompleted = cookieController.getCookieValue();
+    isFormCompleted = cookieController.getCookieValue('isFormCompleted');
+    rsvpGoing = cookieController.getCookieValue('rsvpGoing');
   }
   
   const openDisplayAdminPage = () => {
@@ -48,7 +50,7 @@ function App() {
         <div className='content' id='contentBlock'>
           <Page1 />
           <Page2 />
-          <Page3 isFormCompleted={isFormCompleted}/>
+          <Page3 isFormCompleted={isFormCompleted} rsvpGoing={rsvpGoing} />
         </div>
       </header>
       {displayAdminPage ? <AdminPage closeAdminPageFunction={closeDisplayAdminPage}/> : <div onClick={openDisplayAdminPage} style={{height: '20px', width: '20px', backgroundColour: 'white', position: 'absolute', top: '0', left: '0'}}></div>}
