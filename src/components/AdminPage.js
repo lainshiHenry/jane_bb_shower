@@ -28,7 +28,7 @@ const AdminPage = ({closeAdminPageFunction}) => {
 
             querySnapshot.forEach((document) => {
                 const readData = document.data();
-                arrObj.push(readData.inputName1);
+                arrObj.push(readData.name);
             })
             setAttendeeList(arrObj);
         });

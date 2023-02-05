@@ -5,20 +5,19 @@ const _dbAttendeeListTableName = 'attendeeList';
 
 export default class DBController{
     async handleSubmit({
-        numberOfAttendees, 
-        inputName1 = '', 
-        inputName2 = '', 
-        inputName3 = '', 
-        inputName4 = '', 
+        //still have decision and name
+        numberOfAdults = 0, 
+        numberOfChildren = 0,
+        rsvpDecision = 'No',
+        name = '',
         hasDietaryRestrictions = false, 
         dietaryRestrictionText = ''}){
         try{
             await addDoc(collection(db, _dbAttendeeListTableName), {
-                numberOfAttendees: numberOfAttendees,
-                inputName1: inputName1,
-                inputName2: inputName2,
-                inputName3: inputName3,
-                inputName4: inputName4,
+                numberOfAdults: numberOfAdults,
+                numberOfChildren: numberOfChildren,
+                rsvpDecision: rsvpDecision,
+                name: name,
                 hasDietaryRestrictions: hasDietaryRestrictions,
                 dietaryRestrictionText: dietaryRestrictionText,
             });

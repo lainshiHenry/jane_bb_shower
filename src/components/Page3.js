@@ -6,19 +6,26 @@ import CannotMakeIt from './CannotMakeIt';
 import CanMakeIt from './CanMakeIt';
 import CanMakeItEnd from './CanMakeItEnd';
 import CookieController from '../Controller/CookieController';
+import SubmitButtonImage from '../images/submit_button.png';
+import './RSVPForm.css'
+import DBController from '../Controller/DBController';
 
 const Page3 = ({isFormCompleted = false}) => {
     const [isYesPressed, setIsYesPressed] = useState(false);
     const [isNoPressed, setIsNoPressed] = useState(false);
+    const [nameText, setNameText] = useState('');
     const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
     const [isRSVPByDateVisible, setIsRSVPByDateVisible] = useState(true);
+    const [isRSVPNoSubmitButtonVisible, setIsRSVPNoSubmitButtonVisible] = useState(false);
+    const [isRSVPNoPostSubmitTextVisible, setIsRSVPNoPostSubmitTextVisible] = useState(false);
     const cookieController = new CookieController();
+    const dbController = new DBController();
 
     function _getBlock(){
         if(isYesPressed && !isNoPressed) {
-            return <CanMakeIt setThankYouInfoVisibleFunction={setThankYouInfoVisible} cookieController={cookieController}/>
+            return <CanMakeIt setThankYouInfoVisibleFunction={setThankYouInfoVisible} cookieController={cookieController} attendeeName={nameText}/>
         } else if(!isYesPressed && isNoPressed) {
-            return <CannotMakeIt />
+            return <CannotMakeIt CannotMakeItSubmitted={isRSVPNoPostSubmitTextVisible}/>
         } else {
             return <div></div>
         }
@@ -51,7 +58,9 @@ const Page3 = ({isFormCompleted = false}) => {
         if(YesButton && NoButton){
             _setStyle({enableButton: YesButton, disableButton: NoButton});
             setIsRSVPByDateVisible(false);
+            setIsRSVPNoSubmitButtonVisible(false);
         }
+        setThankYouInfoVisible(false);
     }
 
     const _handleRSVPNoClick = () => {
@@ -62,7 +71,21 @@ const Page3 = ({isFormCompleted = false}) => {
         if(YesButton && NoButton){
             _setStyle({enableButton: NoButton, disableButton: YesButton});
             setIsRSVPByDateVisible(false);
+            setIsRSVPNoSubmitButtonVisible(true);
         }
+    }
+
+    const _handleNameTextChange = (value) => {
+        setNameText(value.target.value);
+    }
+
+    const handleSubmit = () => {
+        console.log('handleSubmit');
+        dbController.handleSubmit({
+            name: nameText,
+        });
+        setIsRSVPNoPostSubmitTextVisible(true);
+        cookieController.writeFormCookies(30);
     }
 
 
@@ -72,15 +95,23 @@ const Page3 = ({isFormCompleted = false}) => {
             <CanMakeItEnd /> :  
             <div className='Page3Style'>
                 <p>RSVP</p>
+                <label htmlFor='AttendeesNameSection'>Name</label>
+                <input type='text' value={nameText} className='AttendeesNameSectionInput' onChange={(newValue) => {_handleNameTextChange(newValue)}}></input>
                 <p>Can You Make it?</p>
                 <div className='PageRSVPButtonWrapper'>
                     <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
                     <button onClick={_handleRSVPNoClick}><img src={NoBunny} className='rsvpButton' id='rsvpNoButton'></img></button>
                 </div>
+                {isRSVPNoSubmitButtonVisible ? 
+                    <button onClick={handleSubmit} className='submitButtonStyle'>
+                        <img src={SubmitButtonImage} className='submitButtonStyleImage'></img>
+                    </button> : 
+                    <div></div>
+                }
                 {isRSVPByDateVisible ? 
                     <section id='rsvpDate'>
                         <div className='hidden'>Please RSVP by: </div>
-                        <div>Date</div>
+                        <div><b>Monday, February 20, 2023</b></div>
                     </section> : 
                     <div></div>
                 }

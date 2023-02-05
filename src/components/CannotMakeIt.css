@@ -16,5 +16,9 @@
     margin: 0 5px;
     text-decoration: none;
     border-radius: 50%;
-    background-color: #eda2c7;
+}
+
+.GiftRegistryLink > img {
+    width: 125px;
+    height: 40px;
 }
