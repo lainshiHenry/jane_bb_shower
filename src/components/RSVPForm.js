@@ -12,17 +12,18 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
   const dbController = new DBController();
 
   const handleSubmit = () => {
-    debugger;
-    dbController.handleSubmit({
-      name: attendeeName,
-      rsvpDecision: "Yes",
-      numberOfAdults: numberOfAdults.current,
-      numberOfChildren: numberOfChildren.current,
-      hasDietaryRestrictions: hasDietaryRestrictions.current,
-      dietaryRestrictionText: dietaryText,
-    });
-    setThankYouInfoVisibleFunction(true);
-    cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: true});
+    if( attendeeName !== '' && numberOfAdults.current >= 1 ){
+      dbController.handleSubmit({
+        name: attendeeName,
+        rsvpDecision: "Yes",
+        numberOfAdults: numberOfAdults.current,
+        numberOfChildren: numberOfChildren.current,
+        hasDietaryRestrictions: hasDietaryRestrictions.current,
+        dietaryRestrictionText: dietaryText,
+      });
+      setThankYouInfoVisibleFunction(true);
+      cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: true});
+    }
   }
 
   function _addSelectedClassToNumChildren(index) {

@@ -83,13 +83,15 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
 
     const handleNoSubmit = () => {
         console.log('handleSubmit');
-        dbController.handleSubmit({
-            name: nameText,
-        });
-        setIsRSVPNoPostSubmitTextVisible(true);
-        setisRSVPNoSubmitted(true);
-        setIsRSVPNoSubmitButtonVisible(false);
-        cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: false});
+        if( nameText !== ''){
+            dbController.handleSubmit({
+                name: nameText,
+            });
+            setIsRSVPNoPostSubmitTextVisible(true);
+            setisRSVPNoSubmitted(true);
+            setIsRSVPNoSubmitButtonVisible(false);
+            cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: false});
+        }
     }
 
 
