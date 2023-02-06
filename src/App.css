@@ -47,8 +47,20 @@
   padding: 2%;
 }
 
+.rsvpTitle{
+  font-size: 43px;
+}
+
 .rsvpUnselectedButton{
   opacity: 40%;
+}
+.AttendeesNameSectionInputLabel{
+  font-size: 24px;
+}
+.inputErrorMessage{
+  color: red;
+  text-align: center;
+  font-size: 24px;
 }
 
 .rsvpSelectedButton{

@@ -16,6 +16,7 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
     const [isNoPressed, setIsNoPressed] = useState(false);
     const [nameText, setNameText] = useState('');
     const [thankYouInfoVisible, setThankYouInfoVisible] = useState(isFormCompleted);
+    const [inputErrorMessageVisible, setInputErrorMessageVisible] = useState(false);
     const [isRSVPByDateVisible, setIsRSVPByDateVisible] = useState(true);
     const [isRSVPNoSubmitButtonVisible, setIsRSVPNoSubmitButtonVisible] = useState(false);
     const [isRSVPNoSubmitted, setisRSVPNoSubmitted] = useState(false);
@@ -61,6 +62,7 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
             _setStyle({enableButton: YesButton, disableButton: NoButton});
             setIsRSVPByDateVisible(false);
             setIsRSVPNoSubmitButtonVisible(false);
+            setInputErrorMessageVisible(false);
         }
         setThankYouInfoVisible(false);
     }
@@ -74,6 +76,7 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
             _setStyle({enableButton: NoButton, disableButton: YesButton});
             setIsRSVPByDateVisible(false);
             setIsRSVPNoSubmitButtonVisible(true);
+            setInputErrorMessageVisible(false);
         }
     }
 
@@ -90,7 +93,14 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
             setIsRSVPNoPostSubmitTextVisible(true);
             setisRSVPNoSubmitted(true);
             setIsRSVPNoSubmitButtonVisible(false);
+            setInputErrorMessageVisible(false);
             cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: false});
+        } else {
+            const inputText = document.getElementById('AttendeesNameSectionInput');
+            if(inputText){
+                inputText.classList.add('AttendeesNameSectionInputError');
+            }
+            setInputErrorMessageVisible(true);
         }
     }
 
@@ -100,9 +110,9 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
         {thankYouInfoVisible ? 
             <CanMakeItEnd /> :  
             <div className='Page3Style'>
-                {isRSVPNoSubmitted ? <div></div>: <div><p>RSVP</p>
-                <label htmlFor='AttendeesNameSection'>Name</label>
-                <input type='text' value={nameText} className='AttendeesNameSectionInput' onChange={(newValue) => {_handleNameTextChange(newValue)}}></input>
+                {isRSVPNoSubmitted ? <div></div>: <div><h1 className='rsvpTitle'>RSVP</h1>
+                <label htmlFor='AttendeesNameSection' className='AttendeesNameSectionInputLabel'>Please Enter Your Name</label>
+                <input type='text' value={nameText} id='AttendeesNameSectionInput' className='AttendeesNameSectionInput' onChange={(newValue) => {_handleNameTextChange(newValue)}}></input>
                 <p>Can You Make it?</p>
                 <div className='PageRSVPButtonWrapper'>
                     <button onClick={_handleRSVPYesClick}><img src={YesBunny} className='rsvpButton' id='rsvpYesButton'></img></button>
@@ -122,6 +132,7 @@ const Page3 = ({isFormCompleted = false, rsvpGoing = false}) => {
                     </section> : 
                     <div></div>
                 }
+                {inputErrorMessageVisible ? <div className='inputErrorMessage'>Please Enter your name</div> : <div></div>}
                 {_getBlock()}
             </div>
         }

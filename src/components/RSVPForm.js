@@ -9,6 +9,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
   let hasDietaryRestrictions = useRef(false);
   const [dietaryText, setDietaryText] = useState('');
   const [displayDietary, setDisplayDietary] = useState(false);
+  const [inputErrorMessageVisible, setInputErrorMessageVisible] = useState(false);
   const dbController = new DBController();
 
   const handleSubmit = () => {
@@ -22,7 +23,14 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
         dietaryRestrictionText: dietaryText,
       });
       setThankYouInfoVisibleFunction(true);
+      setInputErrorMessageVisible(false);
       cookieController.writeFormCookies({numOfDays: 30, rsvpGoing: true});
+    } else {
+      const inputText = document.getElementById('AttendeesNameSectionInput');
+        if(inputText){
+            inputText.classList.add('AttendeesNameSectionInputError');
+        }
+        setInputErrorMessageVisible(true);
     }
   }
 
@@ -257,7 +265,7 @@ const RSVPForm = ({setThankYouInfoVisibleFunction, cookieController, attendeeNam
       <button onClick={handleSubmit} className='submitButtonStyle'>
         <img src={SubmitButtonImage} className='submitButtonStyleImage'></img>
       </button>
-  
+      {inputErrorMessageVisible ? <div className='inputErrorMessage'>Please Enter your name</div> : <div></div>}
     </div>
   )
 }
