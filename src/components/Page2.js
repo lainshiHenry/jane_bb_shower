@@ -14,7 +14,7 @@ const Page2 = () => {
         </section>
         <hr></hr>
         <section>
-            <p>Norberry-Glenlee Community Center</p>
+            <p>Norberry-Glenlee Community Centre</p>
             <p>Multipurpose Room</p>
             <p>25 Molgat Ave.<br /> Winnipeg, MB<br /> R2M 1X3</p>
         </section>
