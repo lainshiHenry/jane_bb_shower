@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className='AnimationSection' onClick={devDeleteCookies}>
+        <div className='AnimationSection' onClick={() => {}}>
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div className='content' id='contentBlock'>
